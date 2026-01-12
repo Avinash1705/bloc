@@ -1,0 +1,36 @@
+name: Flutter Test & Build
+
+on:
+  push:
+    branches: [ main, master,dev ]
+  pull_request:
+    branches: [ main, master,dev ]
+
+jobs:
+  test_and_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # - name: Run tests
+      #   run: flutter test
+
+      - name: Build Android APK (Debug)
+        run: flutter build apk --debug
+
+      # ✅ UPLOAD APK HERE
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
