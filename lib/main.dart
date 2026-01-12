@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'features/home/bloc/home_view.dart';
-import 'features/home/home.dart';
+
 
 void main() {
   runApp(const MyApp());
