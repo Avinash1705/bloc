@@ -2,9 +2,9 @@ name: Flutter Test & Build
 
 on:
   push:
-    branches: [ main, master ,dev]
+    branches: [ main, master,dev ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master,dev ]
 
 jobs:
   test_and_build:
@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # - name: Run tests
-      #   run: flutter test
+      - name: Run tests
+        run: flutter test
 
       - name: Build Android APK (Debug)
         run: flutter build apk --debug
@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
-          path: build/app/outputs/flutter-apk/app-debug.apk
+          path: build/app/outputs/avi/flutter-apk/app-debug.apk
