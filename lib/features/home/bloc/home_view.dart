@@ -8,14 +8,14 @@ import 'home_bloc.dart';
 import 'home_event.dart';
 import 'home_state.dart';
 
-class Home extends StatefulWidget {
-  Home({super.key});
+class HomeView extends StatefulWidget {
+  HomeView({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeView> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<HomeView> {
   final HomeBloc homeBloc = HomeBloc(enableDelay: false);
   //work on test case
   @override
