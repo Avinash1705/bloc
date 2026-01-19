@@ -59,20 +59,20 @@ class _HomeState extends State<HomeView> {
                   "Plants App 🌱",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                actions: [
-                  IconButton(
-                    onPressed: () {
-                      homeBloc.add(HomeWishlistButtonNavigateEvent());
-                    },
-                    icon: Icon(Icons.favorite_border),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      homeBloc.add(HomeCartButtonNavigateEvent());
-                    },
-                    icon: Icon(Icons.shopping_bag_outlined),
-                  ),
-                ],
+                  actions: [
+                    IconButton(
+                      onPressed: () {
+                        homeBloc.add(HomeWishlistButtonNavigateEvent());
+                      },
+                      icon: Icon(Icons.favorite_border),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        homeBloc.add(HomeCartButtonNavigateEvent());
+                      },
+                      icon: Icon(Icons.shopping_bag_outlined),
+                    ),
+                  ],
               ),
               body: RefreshIndicator(
                 onRefresh: () async {
@@ -112,6 +112,7 @@ class _HomeState extends State<HomeView> {
 
                           return ProductTileWidget(
                             product: successState.items[index],
+                            homeBloc: homeBloc,
                           );
                         },
                       ),

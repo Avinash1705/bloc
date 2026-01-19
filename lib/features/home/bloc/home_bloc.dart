@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:blocPlants/data/cart_item.dart';
+import 'package:blocPlants/data/wishlist_items.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/grocery_data.dart';
 import '../../../constant/constant.dart';
@@ -107,6 +109,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       Emitter<HomeState> emit,
       ) {
     // handle wishlist add logic later
+    print("wishlist me add");
+    wishListItems.add(event.clickedProduct);
   }
 
   void _homeProductCartButtonClickedEvent(
@@ -114,6 +118,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       Emitter<HomeState> emit,
       ) {
     // handle cart add logic later
+    print("cart me add");
+    cartListItems.add(event.clickedProduct);
   }
 
   // ---------------- NAVIGATION ----------------
