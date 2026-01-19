@@ -12,50 +12,46 @@ class ProductTileWidget extends StatelessWidget {
   final ProductDataModel product;
   HomeBloc homeBloc;
 
-   ProductTileWidget({
-    super.key,
-    required this.product,
-    required this.homeBloc
-  });
+  ProductTileWidget({super.key, required this.product, required this.homeBloc});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // 🔹 Product Image
-
-            (kIsWeb)?AspectRatio(
-            aspectRatio: 1,
-             child:  CachedNetworkImage(
-               imageUrl: product.imageUrl,
-               cacheManager: CustomCacheManager.instance,
-               fit: BoxFit.cover,
-               placeholder: (context, url) =>
-               const Center(child: CircularProgressIndicator()),
-               errorWidget: (context, url, error) {
-                 debugPrint("Image error: $error");
-                 return const Icon(Icons.image_not_supported);
-               },
-             )
-          ):Platform.isAndroid ?
-             Image.network(
-              product.imageUrl,
-              fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) =>
-              const Icon(Icons.image_not_supported),
-            ):Image.network(
-        product.imageUrl,
-        fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) =>
-        const Icon(Icons.image_not_supported),
-      ),
+          (kIsWeb)
+              ? AspectRatio(
+                  aspectRatio: 1,
+                  child: CachedNetworkImage(
+                    imageUrl: product.imageUrl,
+                    cacheManager: CustomCacheManager.instance,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) {
+                      debugPrint("Image error: $error");
+                      return const Icon(Icons.image_not_supported);
+                    },
+                  ),
+                )
+              : Platform.isAndroid
+              ? Image.network(
+                  product.imageUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) =>
+                      const Icon(Icons.image_not_supported),
+                )
+              : Image.network(
+                  product.imageUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) =>
+                      const Icon(Icons.image_not_supported),
+                ),
 
           // 🔹 Product Info
           Padding(
@@ -81,10 +77,7 @@ class ProductTileWidget extends StatelessWidget {
                   product.description,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey.shade600,
-                  ),
+                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                 ),
 
                 const SizedBox(height: 6),
@@ -102,23 +95,29 @@ class ProductTileWidget extends StatelessWidget {
                       ),
                     ),
 
-                     Row(
-                       children: [
-                         IconButton(
-                           onPressed: () {
-                             homeBloc.add(HomeProductWishlistButtonClickedEvent(clickedProduct: product));
-                           },
-                           icon: Icon(Icons.favorite_border),
-                         ),
-                         IconButton(
-                           onPressed: () {
-                             homeBloc.add(HomeProductCartButtonClickedEvent(product));
-                           },
-                           icon: Icon(Icons.shopping_bag_outlined),
-                         ),
-                       ],
-                     )
-                    ],
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            homeBloc.add(
+                              HomeProductWishlistButtonClickedEvent(
+                                clickedProduct: product,
+                              ),
+                            );
+                          },
+                          icon: Icon(Icons.favorite_border),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            homeBloc.add(
+                              HomeProductCartButtonClickedEvent(product),
+                            );
+                          },
+                          icon: Icon(Icons.shopping_bag_outlined),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),

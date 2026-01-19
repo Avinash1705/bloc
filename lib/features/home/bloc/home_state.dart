@@ -13,9 +13,9 @@ import '../models/home_product_data.dart';
 
 abstract class HomeState {}
 
-//ui state
+//base
  class HomeInitial  extends HomeState{}
-
+//ui state
  class HomeLoadingState extends HomeState{}
  class HomeLoadedSuccessState extends HomeState{
   final List<ProductDataModel> items;
@@ -31,3 +31,6 @@ abstract class HomeState {}
 abstract class HomeActionState extends HomeState{}
  class HomeNavigationToWishlistPageActionState extends HomeActionState{}
  class HomeNavigationToCartPageActionState extends HomeActionState{}
+
+class HomeProductItemCartedState extends HomeActionState{}
+class HomeProductItemWishListedState extends HomeActionState{}

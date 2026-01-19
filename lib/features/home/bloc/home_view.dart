@@ -44,6 +44,12 @@ class _HomeState extends State<HomeView> {
             MaterialPageRoute(builder: (context) => CartPage()),
           );
         }
+        else if(state is HomeProductItemCartedState){
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Item Carted")));
+        }
+        else if(state is HomeProductItemWishListedState){
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Item WishListed")));
+        }
       },
       builder: (context, state) {
         switch (state.runtimeType) {

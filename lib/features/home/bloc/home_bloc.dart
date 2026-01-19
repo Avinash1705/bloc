@@ -28,7 +28,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         _homeProductWishlistButtonClickedEvent);
     on<HomeProductCartButtonClickedEvent>(
         _homeProductCartButtonClickedEvent);
-
+       /* to show message only*/
+    // on<HomeProductWishlistButtonClickedEvent>();
     // Navigation actions
     on<HomeWishlistButtonNavigateEvent>(_homeWishlistButtonNavigateEvent);
     on<HomeCartButtonNavigateEvent>(_homeCartButtonNavigateEvent);
@@ -111,6 +112,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     // handle wishlist add logic later
     print("wishlist me add");
     wishListItems.add(event.clickedProduct);
+    emit(HomeProductItemWishListedState());
   }
 
   void _homeProductCartButtonClickedEvent(
@@ -120,6 +122,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     // handle cart add logic later
     print("cart me add");
     cartListItems.add(event.clickedProduct);
+    emit(HomeProductItemCartedState());
   }
 
   // ---------------- NAVIGATION ----------------

@@ -1,3 +1,6 @@
 abstract class CartEvent {}
 
-class InitEvent extends CartEvent {}
+class CartInitEvent extends CartEvent {}
+
+//2nd
+class CartRemoveFromCartEvent extends CartEvent{}
