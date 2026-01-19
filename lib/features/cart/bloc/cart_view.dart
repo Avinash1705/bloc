@@ -28,9 +28,18 @@ class _CartPageState extends State<CartPage> {
       appBar: AppBar(backgroundColor: Colors.teal, title: Text("Cart")),
       body: BlocConsumer<CartBloc, CartState>(
         bloc: _cartBloc,
-        listener: (context, state) {},
         listenWhen: (prev, curr) => curr is CartActionState,
-        buildWhen: (prev, curr) => curr is! CartActionState,
+        buildWhen: (prev, curr) =>
+            curr is CartLoadingState ||
+            curr is CartErrorState ||
+            curr is CartSuccessState,
+        listener: (context, state) {
+          if (state is CartItemRemovedMessageState) {
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text("Removed from cart")));
+          }
+        },
         builder: (context, state) {
           switch (state.runtimeType) {
             // now finally use state
@@ -43,6 +52,9 @@ class _CartPageState extends State<CartPage> {
                   cartBloc: _cartBloc,
                 ),
               );
+            case CartLoadingState: return Center(child: CircularProgressIndicator());
+            final errorMessage = "cart view catch called";
+            case CartErrorState : return Center(child: Text(""));
           }
           return Container();
         },

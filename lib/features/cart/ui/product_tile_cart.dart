@@ -1,4 +1,5 @@
 import 'package:blocPlants/features/cart/bloc/cart_bloc.dart';
+import 'package:blocPlants/features/cart/bloc/cart_state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../home/models/home_product_data.dart';
 import '../../home/ui/product_tile_widget.dart';
+import '../bloc/cart_event.dart';
 
 class ProductTileCart extends StatelessWidget {
   final ProductDataModel product;
@@ -131,12 +133,9 @@ class ProductTileCart extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         _ActionIcon(
-                          icon: Icons.shopping_bag,
+                          icon: Icons.remove,
                           onTap: () {
-
-                            // cartBloc.add(
-                            //   HomeProductCartButtonClickedEvent(product),
-                            // );
+                            cartBloc.add(CartRemoveFromCartEvent(cartItems: product));
                           },
                         ),
                       ],

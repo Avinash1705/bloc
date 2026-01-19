@@ -24,6 +24,14 @@ class CartSuccessState extends CartState{
   CartSuccessState({required this.cartItems});
 }
 
+class CartLoadingState extends CartState{}
+class CartErrorState  extends CartState{
+  final message ;
+  CartErrorState({this.message = "Items didn't remove"});
+}
+
 
 //action
 class CartActionState extends CartState{}
+
+class CartItemRemovedMessageState extends CartActionState {}
