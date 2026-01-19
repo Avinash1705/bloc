@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 
-import 'features/home/bloc/home_view.dart';
-import 'features/home/home.dart';
+import 'package:blocPlants/features/home/bloc/home_view.dart' show HomeView;
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  Home(),
+      home:  HomeView(),
     );
   }
 }
