@@ -27,4 +27,4 @@ class EmptyWishListState extends WishlistState {
 
 
 //action
-class NavigateToCartPage extends WishlistActionState{}
+class NavigateToCartPageActionState  extends WishlistActionState{}

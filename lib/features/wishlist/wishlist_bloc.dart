@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:blocPlants/data/wishlist_items.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'wishlist_event.dart';
 import 'wishlist_state.dart';
@@ -10,6 +11,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   WishlistBloc() : super(InitWishListState()){
     on<InitEvent>(_initEvent);
     on<RemoveFromWishListEvent> (_removeFromWishListEvent);
+    on<NavigateToCartPageEvent>(_navigateToCartPageEvent);
   }
 
 
@@ -43,5 +45,10 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     else {
       emit(SuccessState(wishListData: wishListItems));
     }
+  }
+
+  FutureOr<void> _navigateToCartPageEvent(NavigateToCartPageEvent event, Emitter<WishlistState> emit) {
+    print("NavigateToCartPageEvent received");
+    emit(NavigateToCartPageActionState());
   }
 }

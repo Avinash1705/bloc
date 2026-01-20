@@ -6,3 +6,6 @@ class RemoveFromWishListEvent extends WishlistEvent {
   final item ;
   RemoveFromWishListEvent({required this.item});
 }
+
+class NavigateToCartPageEvent  extends WishlistEvent{
+}
