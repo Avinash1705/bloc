@@ -2,6 +2,8 @@
 import 'package:blocPlants/features/home/bloc/home_view.dart' show HomeView;
 import 'package:flutter/material.dart';
 
+import 'features/login/bloc/login_view.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  HomeView(),
+      home:  LoginPage(),
     );
   }
 }
