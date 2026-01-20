@@ -16,7 +16,7 @@ class CartState {}
 //base
 class CartInitial extends CartState{}
 
-//ui
+//widgets
 class CartSuccessState extends CartState{
   //product which were card me added
   final List<ProductDataModel> cartItems ;
