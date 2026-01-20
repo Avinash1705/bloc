@@ -15,7 +15,7 @@ abstract class HomeState {}
 
 //base
  class HomeInitial  extends HomeState{}
-//ui state
+//widgets state
  class HomeLoadingState extends HomeState{}
  class HomeLoadedSuccessState extends HomeState{
   final List<ProductDataModel> items;
