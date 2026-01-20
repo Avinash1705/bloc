@@ -1,5 +1,6 @@
 
 import 'package:blocPlants/features/home/bloc/home_view.dart' show HomeView;
+import 'package:blocPlants/features/splash/bloc/splash_view.dart';
 import 'package:flutter/material.dart';
 
 import 'features/login/bloc/login_view.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  LoginPage(),
+      home:  SplashPage(),
     );
   }
 }
